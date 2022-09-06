@@ -34,3 +34,35 @@ span{
   transition: opacity 300ms ease-out;
   opacity: 0;
 }
+
+.list-exit-active {
+  animation: list 1s ease-out forwards;
+}
+
+.list-enter-active {
+  animation: listAdd 1s ease-in alternate-reverse;
+}
+
+@keyframes list {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 0.5;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }  
+}
+
+@keyframes listAdd {
+  0% {    
+    transform: translateY(0)  scale(1);
+  }  
+  100% {
+    opacity: 0;    
+    transform: translateY(200px) scale(0.1);
+  }  
+}
