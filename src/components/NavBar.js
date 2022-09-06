@@ -9,8 +9,8 @@ const NavBar = (props) => (
         <Container>
             <Navbar.Brand href="/">ToDo List</Navbar.Brand>
             <Nav className="me-auto">                                
-                <NavLink to='/' className='nav-link'>home</NavLink>
-                <NavLink to='/about' className='nav-link'>about</NavLink>
+                <NavLink to='/' className='nav-link'>Список дел </NavLink>
+                <NavLink to='/about' className='nav-link'>О приложении</NavLink>
             </Nav>
 
         </Container>

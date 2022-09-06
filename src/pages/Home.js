@@ -5,15 +5,15 @@ import ToDoList from '../components/ToDoList';
 import { FirebaseContext } from '../context/firebase/firebaseContext';
 
 const Home = () => {
-    const { loading, notes, fetchNotes, removeNote} = useContext(FirebaseContext)
+    const { loading, notes, fetchNotes, removeNote } = useContext(FirebaseContext)
 
     useEffect(() => {
         fetchNotes()
     }, [])
-    
+
     return (
         <Fragment>
-            <h1>Список дел на ближайшее будущее</h1>
+            <div><h1>Список дел на ближайшее будущее</h1></div>
             <Form />
             <hr />
             {loading ?
@@ -21,7 +21,6 @@ const Home = () => {
                 :
                 <ToDoList list={notes} onRemove={removeNote} />
             }
-
         </Fragment>
     );
 };
