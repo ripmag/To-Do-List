@@ -1,8 +1,9 @@
-import React, { useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { FirebaseContext } from './firebaseContext';
 import { firebaseReducer } from './firebaseReducer';
 import axios from 'axios'
 import { ADD_NOTE, FETCH_NOTE, REMOVE_NOTE, SHOW_LOADER } from '../types';
+import { AlertContext } from '../alert/alertContext';
 
 const url = process.env.REACT_APP_DB_URL
 
@@ -51,11 +52,10 @@ const FirebaseState = ({ children }) => {
         }
     }
 
-    const removeNote = async id => {
+    const removeNote = async id => {        
 
         console.log('deleteNote id: ', id)
-        await axios.delete(`${url}/notes/${id}.json`)
-        
+        await axios.delete(`${url}/notes/${id}.json`)        
 
         dispatch({
             type: REMOVE_NOTE,
