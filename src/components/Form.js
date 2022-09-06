@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { AlertContext } from '../context/alert/alertContext';
+import { FirebaseContext } from '../context/firebase/firebaseContext';
 
 const Form = () => {
     const [value, setValue] = useState('')
     const alert = useContext(AlertContext)
+    const firebase = useContext(FirebaseContext)
 
-    const submitHandler = event =>{
+    const submitHandler = event => {
         event.preventDefault()
         if (value.trim()) {
-            alert.show('Дело добавлено в список', 'success')
-            setValue('')
+            firebase.addNote(value.trim()).then( () => {alert.show('Дело добавлено в список', 'success')})
+            .catch((e) => {alert.show('Непредвиденная ошибка в addNote. Error:'+e,'danger')})
+            setValue('')          
+
         }
         else {
             alert.show('Введите название дела для добавления его в список дел!')
-        }    
+        }
     }
 
     return (
